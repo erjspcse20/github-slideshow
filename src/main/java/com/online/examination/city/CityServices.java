@@ -1,8 +1,10 @@
 package com.online.examination.city;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,18 @@ public class CityServices{
 	}
 	
 	public void addCity(City city) {
+		UUID uuid = UUID.randomUUID();
+        String randomUUIDString = uuid.toString();
+        Date currentdate=new Date();
+        
+        city.setUuid(randomUUIDString);
+        city.setName(city.getName());
+        city.setDescription(city.getDescription());
+        city.setCreatedBy(city.getCreatedBy());
+        city.setCreatedAt(currentdate);
+        city.setStateId(city.getStateId());
+        city.setIsDeleted(false);
+        city.setIsActive(city.getIsActive());
 		cityRepository.save(city);
 	}
 	

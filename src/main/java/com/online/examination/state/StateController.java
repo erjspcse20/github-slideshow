@@ -25,7 +25,7 @@ public class StateController {
 	}
 	
 	@RequestMapping("/state/{id}")
-	public Optional<State> getState(@PathVariable Integer id) {
+	public Optional<State> getState(@PathVariable String id) {
 		return stateService.getState(id);
 	}
 
@@ -35,12 +35,12 @@ public class StateController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/updateState/{id}")
-	public void updateState(@RequestBody State state,@PathVariable Integer id) {
+	public void updateState(@RequestBody State state,@PathVariable String id) {
 		stateService.updateState(id, state);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/deleteState/{id}")
-	public void deleteState(@RequestBody State state,@PathVariable Integer id) {
+	public void deleteState(@RequestBody State state,@PathVariable String id) {
 		stateService.deleteState(id, state);
 	}
 }
